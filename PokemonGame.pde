@@ -1,3 +1,4 @@
+//main pokemon abstract class, John was here
 abstract class Pokemon extends GameObject{
   int currentHP;
   int maxHP;
