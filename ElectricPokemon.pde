@@ -13,5 +13,5 @@ class Pikachu extends Pokemon {
     Bolt b = new Bolt(x, y, direction); 
     g.addProjectile(b);
   }
-
+   //robert was here
 }
