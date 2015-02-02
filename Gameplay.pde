@@ -21,6 +21,7 @@ void setup() {
 void draw() {
   background(255);
   g.tick();
+  g.getPikachu().
 }
 
 void keyPressed() {
