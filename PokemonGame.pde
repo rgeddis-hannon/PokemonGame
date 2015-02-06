@@ -66,6 +66,11 @@ abstract class Pokemon extends GameObject{
       xVel = 0;
     }
   }
+  void loseHP(){
+    currentHP = currentHP - 1;
+    println(currentHP);
+    
+  }
 
   boolean isUnconscious() {
     return currentHP <= 0;

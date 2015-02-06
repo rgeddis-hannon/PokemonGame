@@ -5,6 +5,7 @@ class Charmander extends Pokemon {
     println("Charmander initialized!");
     wid = 250;
     hei = 250;
+    currentHP=50;
     imgSrc = loadImage("http://cdn.bulbagarden.net/upload/thumb/7/73/004Charmander.png/250px-004Charmander.png");
   }
   
@@ -13,5 +14,4 @@ class Charmander extends Pokemon {
     Fireball f = new Fireball(); 
     g.addProjectile(f);
   }
-  
 }

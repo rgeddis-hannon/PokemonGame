@@ -12,23 +12,46 @@ class Game {
   }
   
   void tick() {
+    
     updateAllProjectiles();
     drawAllProjectiles();
     updateAllPokemon();
     drawAllPokemon();
+    isDead();
   }
   void addProjectile(Projectile p) {
       projectiles.add(p);
   }  
+  /*void isDead(){
+    int r =0;
+    if (pik != null || cha != null) { 
+      if (pik.currentHP ==0) {
+        pik=null;
+        println("Charmander wins");
+      }
+       else if (cha.currentHP ==0) {
+        cha=null;
+        println("Pikachu wins");
+       }
+    } 
+    
+  }*/
   void updateAllProjectiles() {
     for(int i = 0; i < projectiles.size(); i++){
       Projectile p = projectiles.get(i);
       p.update();
       if(cha.hitTest(p) == true){
-        //p.currentHP--;
         cha.jump();
         projectiles.remove(i);
         println("you have been hit!");
+        cha.loseHP();
+       
+      }
+       else if(pik.hitTest(p) == true){
+        pik.jump();
+        projectiles.remove(i);
+        println("you have been hit!");
+        pik.loseHP();
       }
     }
   }
@@ -41,12 +64,21 @@ class Game {
   
   void updateAllPokemon() {
     if (cha != null && pik != null) {
+      if (pik.currentHP ==0) {
+        //pikachu rotates and falls on its side 
+      }
+       else if (cha.currentHP ==0) {
+        //charmander rotates and falls on its side
+       }
+    } 
+     else {
       moveLR();
       jump();
       cha.wrap();
       pik.wrap();
       cha.updatePosition();
       pik.updatePosition();
+     }
     }
   }
 
