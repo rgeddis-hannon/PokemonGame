@@ -22,7 +22,7 @@ class Fireball extends Projectile {
   }
   void drawSelf() {
     fill(col);
-    ellipse(x, y, 20, 20);
+    ellipse(x, y, 40, 40);
   }
   
 }
