@@ -28,17 +28,17 @@ class Game {
     if (pik != null || cha != null) { 
       if (pik.isUnconscious()) {
         textSize(115);
-        text("Charmander Wins!", 30, 360);
         fill(255,0,0);
+        text("Charmander Wins!", 30, 360);
         while (e<10) {
           cha.jump();
           e++;
         }
       }
        else if (cha.isUnconscious()) {
-        textSize(150);
-        text("Pikachu Wins!", 50, 360);
+        textSize(115);
         fill(#ffff26);
+        text("Pikachu Wins!", 120, 360);
         while (e<10) {
           pik.jump();
           e++;
@@ -87,13 +87,12 @@ class Game {
     if (cha != null && pik != null) {
       pik.drawSelf();
       cha.drawSelf();
-
     }  
   }
   void showHP(){
     textSize(100);
     fill(255,0,0);
-    text(cha.currentHP, 930,100);
+    text(cha.currentHP, 900,100);
     fill(#ffff26);
     text(pik.currentHP, 10,100);
   }

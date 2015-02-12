@@ -76,13 +76,15 @@ abstract class Pokemon extends GameObject{
   }
   
   void drawSelf() {
+    pushMatrix();
     if (currentHP <= 0){
-      tint(255, 126);  
-   }
-   else {
-      noTint(); 
-   }
-      pushMatrix();
+      tint(255, 126);
+      rotate(.5);
+     }
+     else {
+        noTint(); 
+     }
+
       if (direction =="left") {
           scale(1.0, 1.0);
           image(imgSrc, x, y);

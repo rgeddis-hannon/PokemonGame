@@ -12,9 +12,4 @@ class Charmander extends Pokemon {
     Fireball f = new Fireball(x, y, direction); 
     g.addProjectile(f);
   }
-    void Cdead(){
-    if (currentHP <= 0){
-      tint(255, 126);  
-      }
-    }
 }
