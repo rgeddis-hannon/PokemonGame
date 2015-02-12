@@ -12,7 +12,7 @@ class Game {
   }
 
   void tick() {
-    
+
     updateAllProjectiles();
     drawAllProjectiles();
     updateAllPokemon();
@@ -23,19 +23,18 @@ class Game {
   void addProjectile(Projectile p) {
     projectiles.add(p);
   }  
-  void isDead(){
+  void isDead() {
     int e = 0;
     if (pik != null || cha != null) { 
       if (pik.isUnconscious()) {
         textSize(115);
-        fill(255,0,0);
+        fill(255, 0, 0);
         text("Charmander Wins!", 30, 360);
         while (e<10) {
           cha.jump();
           e++;
         }
-      }
-       else if (cha.isUnconscious()) {
+      } else if (cha.isUnconscious()) {
         textSize(115);
         fill(#ffff26);
         text("Pikachu Wins!", 120, 360);
@@ -43,35 +42,30 @@ class Game {
           pik.jump();
           e++;
         }
-       }
-    } 
-    
+      }
+    }
   }
   void updateAllProjectiles() {
     for (int i = 0; i < projectiles.size (); i++) {
       Projectile p = projectiles.get(i);
       p.update();
-<<<<<<< HEAD
-      if(cha.hitTest(p) == true){
+      if (cha.hitTest(p) == true) {
         cha.jump();
         projectiles.remove(i);
         cha.loseHP();
-        
-      }
-       else if(pik.hitTest(p) == true){
+      } else if (pik.hitTest(p) == true) {
         pik.jump();
         projectiles.remove(i);
-       
+
         pik.loseHP();
-=======
-      if (cha.hitTest(p) == true) {
-        //p.currentHP--;
-        cha.jump();
-        projectiles.remove(i);
-        println("you have been hit!");
-      } else if (projectiles.get(i).getX() > width || projectiles.get(i).getX() < 0) {
-        projectiles.remove(i);
->>>>>>> e05aefe0a5299a64a6cc3ce691ef74fbc33d842a
+        if (cha.hitTest(p) == true) {
+          //p.currentHP--;
+          cha.jump();
+          projectiles.remove(i);
+          println("you have been hit!");
+        } else if (projectiles.get(i).getX() > width || projectiles.get(i).getX() < 0) {
+          projectiles.remove(i);
+        }
       }
     }
   }
@@ -99,17 +93,17 @@ class Game {
       cha.drawSelf();
     }
   }
-<<<<<<< HEAD
-  void showHP(){
-    textSize(100);
-    fill(255,0,0);
-    text(cha.currentHP, 900,100);
-    fill(#ffff26);
-    text(pik.currentHP, 10,100);
-  }
-=======
 
->>>>>>> e05aefe0a5299a64a6cc3ce691ef74fbc33d842a
+  void showHP() {
+    textSize(100);
+    fill(255, 0, 0);
+    text(cha.currentHP, 900, 100);
+    fill(#ffff26);
+    text(pik.currentHP, 10, 100);
+  }
+
+
+
   Pikachu getPikachu() {
     return pik;
   }
