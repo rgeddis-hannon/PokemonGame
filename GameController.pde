@@ -3,14 +3,14 @@ class Game {
   Pikachu pik;
   Charmander cha;
   //ArrayList<Platform> platforms;
-  
-  
-  Game(){
+
+
+  Game() {
     pik = new Pikachu(this);
     cha = new Charmander(this);
     projectiles = new ArrayList<Projectile>();
   }
-  
+
   void tick() {
     
     updateAllProjectiles();
@@ -21,7 +21,7 @@ class Game {
     showHP();
   }
   void addProjectile(Projectile p) {
-      projectiles.add(p);
+    projectiles.add(p);
   }  
   void isDead(){
     int e = 0;
@@ -48,9 +48,10 @@ class Game {
     
   }
   void updateAllProjectiles() {
-    for(int i = 0; i < projectiles.size(); i++){
+    for (int i = 0; i < projectiles.size (); i++) {
       Projectile p = projectiles.get(i);
       p.update();
+<<<<<<< HEAD
       if(cha.hitTest(p) == true){
         cha.jump();
         projectiles.remove(i);
@@ -62,16 +63,25 @@ class Game {
         projectiles.remove(i);
        
         pik.loseHP();
+=======
+      if (cha.hitTest(p) == true) {
+        //p.currentHP--;
+        cha.jump();
+        projectiles.remove(i);
+        println("you have been hit!");
+      } else if (projectiles.get(i).getX() > width || projectiles.get(i).getX() < 0) {
+        projectiles.remove(i);
+>>>>>>> e05aefe0a5299a64a6cc3ce691ef74fbc33d842a
       }
     }
   }
   void drawAllProjectiles() {
-    for(int i = 0; i < projectiles.size(); i++){
+    for (int i = 0; i < projectiles.size (); i++) {
       Projectile p = projectiles.get(i);
       p.drawSelf();
     }
   }
-  
+
   void updateAllPokemon() {
     if (cha != null && pik != null) {
       moveLR();
@@ -87,8 +97,9 @@ class Game {
     if (cha != null && pik != null) {
       pik.drawSelf();
       cha.drawSelf();
-    }  
+    }
   }
+<<<<<<< HEAD
   void showHP(){
     textSize(100);
     fill(255,0,0);
@@ -96,6 +107,9 @@ class Game {
     fill(#ffff26);
     text(pik.currentHP, 10,100);
   }
+=======
+
+>>>>>>> e05aefe0a5299a64a6cc3ce691ef74fbc33d842a
   Pikachu getPikachu() {
     return pik;
   }
@@ -103,3 +117,4 @@ class Game {
     return cha;
   }
 }
+
