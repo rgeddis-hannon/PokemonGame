@@ -74,12 +74,26 @@ abstract class Pokemon extends GameObject{
   boolean isUnconscious() {
     return currentHP <= 0;
   }
-  void dead(){
+  
+  void drawSelf() {
     if (currentHP <= 0){
       tint(255, 126);  
    }
-   else{
-     noTint();
+   else {
+      noTint(); 
    }
+      pushMatrix();
+      if (direction =="left") {
+          scale(1.0, 1.0);
+          image(imgSrc, x, y);
+      } else  if(direction == "right"){
+          scale(-1.0, 1.0);
+          image(imgSrc, -x - imgSrc.width, y);
+      } else {
+        scale(1.0, 1.0);
+        image(imgSrc, x, y);
+      }
+      popMatrix();
   }
+
 }

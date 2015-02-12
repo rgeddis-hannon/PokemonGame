@@ -18,6 +18,7 @@ class Game {
     updateAllPokemon();
     drawAllPokemon();
     isDead();
+    showHP();
   }
   void addProjectile(Projectile p) {
       projectiles.add(p);
@@ -54,10 +55,12 @@ class Game {
         cha.jump();
         projectiles.remove(i);
         cha.loseHP();
+        
       }
        else if(pik.hitTest(p) == true){
         pik.jump();
         projectiles.remove(i);
+       
         pik.loseHP();
       }
     }
@@ -77,13 +80,6 @@ class Game {
       pik.wrap();
       cha.updatePosition();
       pik.updatePosition();
-
-      if (cha.isUnconscious()){
-        cha.dead();
-      }
-      else if (pik.isUnconscious()){
-        pik.dead();
-      }
     }
   }
 
@@ -94,7 +90,13 @@ class Game {
 
     }  
   }
-  
+  void showHP(){
+    textSize(100);
+    fill(255,0,0);
+    text(cha.currentHP, 930,100);
+    fill(#ffff26);
+    text(pik.currentHP, 10,100);
+  }
   Pikachu getPikachu() {
     return pik;
   }
