@@ -22,20 +22,30 @@ class Game {
   void addProjectile(Projectile p) {
       projectiles.add(p);
   }  
-  /*void isDead(){
-    int r =0;
+  void isDead(){
+    int e = 0;
     if (pik != null || cha != null) { 
-      if (pik.currentHP ==0) {
-        pik=null;
-        println("Charmander wins");
+      if (pik.isUnconscious()) {
+        textSize(115);
+        text("Charmander Wins!", 30, 360);
+        fill(255,0,0);
+        while (e<10) {
+          cha.jump();
+          e++;
+        }
       }
-       else if (cha.currentHP ==0) {
-        cha=null;
-        println("Pikachu wins");
+       else if (cha.isUnconscious()) {
+        textSize(150);
+        text("Pikachu Wins!", 50, 360);
+        fill(#ffff26);
+        while (e<10) {
+          pik.jump();
+          e++;
+        }
        }
     } 
     
-  }*/
+  }
   void updateAllProjectiles() {
     for(int i = 0; i < projectiles.size(); i++){
       Projectile p = projectiles.get(i);
@@ -43,14 +53,11 @@ class Game {
       if(cha.hitTest(p) == true){
         cha.jump();
         projectiles.remove(i);
-        println("you have been hit!");
         cha.loseHP();
-       
       }
        else if(pik.hitTest(p) == true){
         pik.jump();
         projectiles.remove(i);
-        println("you have been hit!");
         pik.loseHP();
       }
     }
@@ -64,21 +71,19 @@ class Game {
   
   void updateAllPokemon() {
     if (cha != null && pik != null) {
-      if (pik.currentHP ==0) {
-        //pikachu rotates and falls on its side 
-      }
-       else if (cha.currentHP ==0) {
-        //charmander rotates and falls on its side
-       }
-    } 
-     else {
       moveLR();
       jump();
       cha.wrap();
       pik.wrap();
       cha.updatePosition();
       pik.updatePosition();
-     }
+
+      if (cha.isUnconscious()){
+        cha.dead();
+      }
+      else if (pik.isUnconscious()){
+        pik.dead();
+      }
     }
   }
 
@@ -86,6 +91,7 @@ class Game {
     if (cha != null && pik != null) {
       pik.drawSelf();
       cha.drawSelf();
+
     }  
   }
   

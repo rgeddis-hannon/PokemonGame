@@ -8,6 +8,7 @@ abstract class Pokemon extends GameObject{
   float xVel;
   float xAcc;
 
+
   void moveRight() {
     direction = "right";
     xVel = xVel + 9;
@@ -68,12 +69,17 @@ abstract class Pokemon extends GameObject{
   }
   void loseHP(){
     currentHP = currentHP - 1;
-    println(currentHP);
     
   }
-
   boolean isUnconscious() {
     return currentHP <= 0;
   }
+  void dead(){
+    if (currentHP <= 0){
+      tint(255, 126);  
+   }
+   else{
+     noTint();
+   }
+  }
 }
-
