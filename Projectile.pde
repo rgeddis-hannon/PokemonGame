@@ -24,7 +24,9 @@ class Fireball extends Projectile {
     fill(col);
     ellipse(x, y, 20, 20);
   }
+  
 }
+
 class Bolt extends Projectile{
   color col;
   Bolt(float startX, float startY, String startDir) {

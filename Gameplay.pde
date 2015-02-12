@@ -22,7 +22,7 @@ void draw() {
   background(255);
   g.tick();
   //Pokemon sometimes slide slowly (maybe triggered by attacking?)
-  println("Pikachu X-Velocity: " + g.getPikachu().getXVel());
+  //println("Pikachu X-Velocity: " + g.getPikachu().getXVel());
 }
 
 void keyPressed() {
