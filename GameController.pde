@@ -1,4 +1,4 @@
-class Game {
+class Game implements Serializable{
   ArrayList<Projectile> projectiles;
   Pikachu pik;
   Charmander cha;
@@ -110,5 +110,34 @@ class Game {
   Charmander getCharmander() {
     return cha;
   }
+  
+  void saveState(){
+    println("saving...");
+    PrintWriter output = createWriter("savedState.txt");
+    output.println("pik:" + TAB + "" + pik.x + "" + TAB + "" + pik.y);
+    output.println("cha:" + TAB + "" + cha.x + "" + TAB + "" + cha.y);
+    output.flush();
+    output.close();
+  }
+  void loadState(){
+    println("loading save...");
+    BufferedReader reader = createReader("savedState.txt");
+    String line;
+    try {
+      while((line = reader.readLine()) != null){
+        String[] pieces = split(line, TAB);
+        if(pieces[0].equals("pik:")){
+          pik.x = float(pieces[1]);
+          pik.y = float(pieces[2]);
+        } else if(pieces[0].equals("cha:")){
+          cha.x = float(pieces[1]);
+          cha.y = float(pieces[2]);
+        }
+      }
+    } catch (IOException e) {
+    println("IOException :(");
+    }
+  }
+  
 }
 

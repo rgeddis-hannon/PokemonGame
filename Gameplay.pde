@@ -38,6 +38,8 @@ void keyPressed() {
   if (keyCode == LEFT) keyz[5] = true;
   if (keyCode == DOWN) keyz[6] = true;
   if (keyCode == RIGHT) keyz[7] = true;
+  if (key == 'y') g.saveState();
+  if (key == 'l') g.loadState();
 }
 
 void keyReleased() {
