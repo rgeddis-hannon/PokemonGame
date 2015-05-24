@@ -13,14 +13,20 @@ boolean dPressed = false;
 //w,a,s,d,UP,LEFT,DOWN,RIGHT.
 boolean keyz[] = new boolean [8];
 
+int time;
+int attackDelay = 0;
+
 void setup() {
   g = new Game();
+  time = millis();//store the current time
   size(1080, 720);
 }
 
 void draw() {
   background(255);
   g.tick();
+  //Pokemon sometimes slide slowly (maybe triggered by attacking?)
+  //println("Pikachu X-Velocity: " + g.getPikachu().getXVel());
 }
 
 void keyPressed() {
@@ -32,6 +38,8 @@ void keyPressed() {
   if (keyCode == LEFT) keyz[5] = true;
   if (keyCode == DOWN) keyz[6] = true;
   if (keyCode == RIGHT) keyz[7] = true;
+  if (key == 'y') g.saveState();
+  if (key == 'l') g.loadState();
 }
 
 void keyReleased() {
@@ -54,7 +62,10 @@ void moveLR() {
   }
 
   if (keyz[6] == true) {
-    g.getPikachu().attack();
+    if (millis() - time >= attackDelay) {
+      g.getPikachu().attack();
+      attackDelay = millis() + 900;
+    }
   }
 
   if (keyz[1] == true) {
@@ -65,7 +76,10 @@ void moveLR() {
   }
 
   if (keyz[2] == true) {
-    g.getCharmander().attack();
+    if (millis() - time >= attackDelay) {
+      g.getCharmander().attack();
+      attackDelay = millis() + 900;
+    }
   }
 }
 
